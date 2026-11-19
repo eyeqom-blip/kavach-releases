@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Kavach - Parivar Suraksha Shield</title>
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; background: #0a0e1a; color: #f1f5f9; margin: 0; padding: 20px; line-height: 1.6; }
+    .box { max-width: 680px; margin: auto; background: #131a2e; border: 1px solid #1e293b; border-radius: 22px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+    .badge { display: inline-block; background: rgba(0,229,255,0.15); color: #00e5ff; padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; }
+    h1 { margin: 10px 0 6px; font-size: 28px; color: #fff; }
+    .btn { display: block; text-align: center; background: linear-gradient(90deg, #00e5ff, #7c4dff); color: #000; font-weight: 800; font-size: 17px; padding: 16px; border-radius: 14px; text-decoration: none; margin: 20px 0; }
+    .card { background: #0f1629; border-radius: 14px; padding: 14px; margin: 12px 0; border: 1px solid #1e293b; }
+    h3 { margin-top: 0; color: #00e5ff; }
+    .footer { font-size: 12px; color: #94a3b8; margin-top: 24px; border-top: 1px solid #1e293b; padding-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span class="badge">🛡️ Made for Indian Families</span>
+    <h1>Family Kavach</h1>
+    <p>Live GPS Tracking • Silent-Breaking SOS • Encrypted Family Chat • Kids Safety • Anti-Theft Shield</p>
+    <p><b>Sirf ₹20/month (5 Members)</b> • ₹80 / 6 Months • Extra Member ₹5/mo</p>
+
+    <a id="dlBtn" class="btn" href="https://github.com/eyeqom-blip/kavach-releases/releases/latest">
+      📲 Download Family Kavach APK
+    </a>
+    <p id="verTxt" style="text-align:center;font-size:13px;color:#94a3b8;margin-top:-10px;">Loading latest version...</p>
+
+    <div class="card">
+      <h3>📲 Install Kaise Karein?</h3>
+      <p>1. Upar <b>Download Family Kavach APK</b> button dabayein.<br>
+         2. File download hone par open karke <b>Install</b> karein.<br>
+         3. App khol kar Step-by-Step Permission Wizard complete karein &amp; Family Invite Code daalein.</p>
+    </div>
+
+    <div class="card" id="privacy">
+      <h3>🔒 Privacy Policy &amp; Data Safety</h3>
+      <p>Family Kavach collects GPS location, battery status, and device identifier solely for real-time family safety and anti-theft alerts among linked family members. All family chat messages are End-to-End Encrypted (AES-256) on-device. We never sell or share user data with third-party advertisers.</p>
+    </div>
+
+    <div class="card" id="terms">
+      <h3>📜 Terms &amp; Refund Policy</h3>
+      <p>Plans start at ₹20/month or ₹80/6 months for up to 5 family members (+₹5/month per extra member, optional Pro Guard add-on ₹10/month per selected device). Digital subscription fees once activated are non-refundable for the active billing period, though users may cancel renewals anytime. Contact: support@familykavach.app</p>
+    </div>
+
+    <div class="footer">
+      Family Kavach • Smart Family Safety Network • <a href="#privacy" style="color:#00e5ff">Privacy</a> • <a href="#terms" style="color:#00e5ff">Terms &amp; Refund</a>
+    </div>
+  </div>
+
+  <script>
+    fetch('https://api.github.com/repos/eyeqom-blip/kavach-releases/releases/latest')
+      .then(r => r.json())
+      .then(data => {
+        if (data.assets && data.assets.length > 0) {
+          const apk = data.assets.find(a => a.name.endsWith('.apk')) || data.assets[0];
+          document.getElementById('dlBtn').href = apk.browser_download_url;
+          document.getElementById('verTxt').textContent = 'Latest Version: ' + data.tag_name + ' (' + (apk.size / (1024*1024)).toFixed(1) + ' MB)';
+        }
+      })
+      .catch(() => { document.getElementById('verTxt').textContent = 'Tap button above to download latest APK'; });
+  </script>
+</body>
+</html>
